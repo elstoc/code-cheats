@@ -46,3 +46,39 @@ Math.sqrt(9)                    // => 3
 Math.sin(0)
 Math.log(10)                    // natural logarithm of 10
 Math.log10(100)                 // base 10 logarithm of 100 (ES6)
+
+/******************/
+/* Special Values */
+/******************/
+
+// Infinity
+Infinity === Number.POSITIVE_INFINITY === 1/0 === Number.MAX_VALUE * 2     // overflow
+-Infinity === Number.NEGATIVE_INFINITY === -1/0 === -Number.MAX_VALUE * 2
+Infinity !== -Infinity
+Number.isFinite(Infinity) === Number.isFinite(-Infinity) === false
+
+// The following all return NaN
+NaN
+Number.NaN
+0/0
+Infinity/Infinity
+
+// You cannot test for equality of NaN
+NaN !== NaN
+Number.isNaN(NaN) === true
+
+// Zero can be negative
+Number.MIN_VALUE/2 === 0
+-Number.MIN_VALUE/2 === -1/Infinity === -0
+0 === -0                         
+
+/*************************/
+/* ES6 Number Properties */
+/*************************/
+Number.parseInt() === parseInt()      // return the first integer found in a string
+Number.parseFloat() === parseFloat()  // return the first float found in a string
+Number.isInteger(x)                   // Is x an integer?
+Number.isSafeInteger(x)               // Is x an integer -(2**53) < x < 2**53?
+Number.MIN_SAFE_INTEGER               // => -(2**53 - 1)
+Number.MAX_SAFE_INTEGER               // => 2**53 - 1
+Number.EPSILON                        // => 2**-52: smallest difference between numbers
