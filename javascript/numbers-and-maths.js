@@ -10,6 +10,30 @@
 0b10101     // => 21 (binary)
 0o377       // => 255 (octal)
 
+/***************************/
+/* BigInt (ES2020 Feature) */
+/***************************/
+
+0n           // => 0
+3n           // => 3
+100000n      // => 100000
+
+0xffn        // => 255 (hex)
+0b10101n     // => 21 (binary)
+0o377n       // => 255 (octal)
+
+BigInt(Number.MAX_SAFE_INTEGER)     // => 9007199254740991n
+let string = "1" + "0".repeat(100); // 1 followed by 100 zeros.
+BigInt(string)                      // => 10n**100n: one googol
+
+7n / 2n === 3n
+7n % 2n === 1n
+
+// You can compare Int and BigInt (except using type comparison)
+1 < 2n
+0 == 0n
+0 !== 0n
+
 /******************/
 /* Floating Point */
 /******************/
@@ -18,6 +42,12 @@
 .3333333
 6.02e23
 1.4738223E-32
+
+// Floating Point numbers are *estimates* only
+// For precision and predictability consider using scaled integers
+let x = 0.3 - 0.2;
+let y = 0.2 - 0.1;
+x !== y;
 
 /**************/
 /* Separators */
