@@ -65,3 +65,18 @@ hw.charAt(0) === hw[0] === "H"
 " x ".trimStart() === "x "
 " x ".trimEnd() === " x"
 " x ".trim() === "x"
+
+/* Template Literals */
+
+let user = "Bill"
+`Hello ${user}` === "Hello Bill"
+
+/* Pattern Matching with RegExp */
+
+let str = "numbers: 1, 2, 12"
+let regx = /\d+/g                               // match all ocurrances of 1 or more digits
+regx.test(str) === true                         // does it match?
+str.search(regx) === 9                          // position of first match
+str.match(regx) === ["1", "2", "12"]            // array of matches
+str.replace(regx, '*') === "numbers: *, *, *"
+str.split(/\D+/) === ["", "1", "2", "12"]       // split at non-digit characters
