@@ -35,3 +35,33 @@ with two lines`
 '\\'        // Backslash
 '\xnn'      // Unicode character represented by the two hex digits nn
 '\xnnnn'    // Unicode character represented by the four hex digits nnnn
+
+/* String Manipulation */
+
+"Hello " + "world" === "Hello World"    // Concatenation
+"alpha" < "beta"                        // Comparison uses the 16-bit unicode character values
+"this".length === 4                     // Count the characters (but beware of 32-bit unicode characters)
+
+let hw = "Hello world"
+
+hw.substring(1,4) === hw.slice(1,4) == "ell"    // second to fourth characters
+hw.slice(-3) === "rld"                          // last three characters
+hw.split(" ") === ["Hello", "world"];
+
+hw.indexOf("l", 3) === 3                        // position of the "l" string on or after position 3
+hw.indexOf("Goodbye") === -1                    // string not found
+hw.lastIndexOf("l") === 9                       // last occurence of "l"
+
+hw.startsWith("He") === true
+hw.endsWith("universe") === false
+hw.includes("ell") === true
+
+hw.charAt(0) === hw[0] === "H"
+
+"x".padStart(3) === "   x"
+"x".padEnd(3) === "x  "
+"x".padStart(2, "-") === "--x"
+
+" x ".trimStart() === "x "
+" x ".trimEnd() === " x"
+" x ".trim() === "x"
