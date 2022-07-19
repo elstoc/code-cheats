@@ -1,21 +1,48 @@
+/**********************************/
+/* Conditional execution using && */
+/**********************************/
+
+(x === 1) && execute_function();
+
+/********************/
 /* if...then...else */
+/********************/
 
-// single line if syntax
-if(condition) statement;
+if(x === 1) statement;
 
-// single line if..then..else
-if(condition1)
-    statement1;
-else if(condition2)
-    statement2;
+if(x === 1)
+    //Execute some code
+else if(x === 2)
+    //Execute some code
 else
-    statement3;
+    //Execute some code
 
-// with code blocks
-if(condition1) {
-    statements1;
-} else if(condition2) {
-    statements2;
+if(x === 1) {
+    //Execute some code
+} else if(x === 2) {
+    //Execute some code
 } else {
-    statements3;
+    //Execute some code
 }
+
+/**********/
+/* Switch */
+/**********/
+
+switch(x) {
+    case 1:
+        // Execute some code
+        break;
+    case 2:
+        // Execute some code
+        break;
+    default:
+        // Execute some code
+        break;
+}
+
+/********************/
+/* Ternary Operator */
+/********************/
+
+x === 1 ? do_something : do_something_else;
