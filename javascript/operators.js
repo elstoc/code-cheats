@@ -18,7 +18,7 @@ a += 1              // increment and assign, equivalent to a = a + 1
 /* Boolean logic */
 /*****************/
 
-!false                      // not
+!false === true             // not
 false && true === false     // and
 false || true === true      // or
 
