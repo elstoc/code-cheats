@@ -32,7 +32,6 @@ String(false) === false.toString() === "false"
 123456.789.toExponential(3) === "1.235e+5"
 123456.789.toPrecision(7) === "123456.8"
 
-
 let piText = "pi is about 3.14"
 parseInt(piText) === 3
 parseFloat(piText) === 3.14
