@@ -53,4 +53,3 @@ isNaN(NaN) === true         // use isNaN instead
 
 {x:1} !== {x:1}             // these are different objects
 [1,2] !== [1,2]             // these are different arrays
-
