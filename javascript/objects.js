@@ -99,7 +99,14 @@ for(let prop in obj) {
     - Reflect.ownKeys() returns all properties, enumerable or not, symbol or not
 */
 
-/*********************/
-/* Extending Objects */
-/*********************/
+/********************************************/
+/* Extending Objects and the Spread Operator*/
+/********************************************/
 
+let objA = { x: "Ax", y: "Ay", z: "Az" }
+let objB = { y: "By" }
+let objC = { z: "Cz" }
+objA = Object.assign(objA, objB, objC)          // modifies and returns objA = { x: "Ax", y: "By", z: "Cz" }
+                                                // by copying parameters into the first object from subsequent objects
+
+objA = { ...objA, ...objB, ...objC }            // the same operation using the spread operator
