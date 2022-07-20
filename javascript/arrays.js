@@ -58,6 +58,11 @@ let a = [1, 2, 3]
 let b = [0, ...a, 4]
 b === [0, 1, 2, 3, 4]
 
+let a = [1, 2, 3]
+let b = [4, 5, 6]
+let c = a.concat(b)         // concat works much the same as the spread operator here
+c === [1, 2, 3, 4, 5, 6]
+
 /********************************/
 /* Adding and Removing Elements */
 /********************************/
@@ -77,6 +82,17 @@ a.length = 3
 a === [1, 2, 3]
 a.length = 0
 a === []
+
+/****************************/
+/* Multi-Dimensional Arrays */
+/****************************/
+
+let matrix = [[1, 2, 3],
+              [4, 5, 6],
+              [7, 8, 9]]
+
+matrix[0][2] === 3
+matrix[2][0] === 7
 
 /************************/
 /* Stacks with push/pop */
@@ -103,3 +119,41 @@ let z = a.shift()                       // remove one element from the start of 
 a === ["one", "two", "three"]
 z === "zero"
 a.length === 3
+
+/********************/
+/* Iterating Arrays */
+/********************/
+
+let letters = ["A", "B", "C"]
+
+// loop through array values with for/of
+// Note: for/of will also iterate through empty elements in a sparse array
+let concat = ""
+for(letter of letters) { concat += letter; }
+concat === "ABC"
+
+// loop through indices with for/in
+for(i in letters) { concat += letters[i]}
+concat === "ABC"
+
+// with forEach()
+// Note: empty elements will be ignored
+//       you cannot break out of (or continue) a forEach loop
+//       you don't have to use the index/array parameters
+letters.forEach((letter, index, array) => concat += letter )
+concat === "ABC"
+
+// map() returns a new array
+let lowerLetters = letters.map((letter) => letter.toLowerCase())
+lowerLetters === ["a", "b", "c"]
+
+// filter() returns a subset of elements where return value is true
+let filteredLetters = letters.filter((letter) => letter === "A")
+filteredLetters === ["A"]
+
+/***********************/
+/* Array Decomposition */
+/***********************/
+
+// extract arrays into variables
+let [x, y, z] = [1, 2, 3]               // x == 1; y == 2; z == 3
