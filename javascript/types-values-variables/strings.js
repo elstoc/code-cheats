@@ -1,22 +1,30 @@
+/************/
 /* Encoding */
+/************/
 
 length("£") === 1;              // Each character is a single immutable unsigned 16 bit value
 length("🎧") === 2;             // Except those characters that don't fit into 16 bits
 
+/*************/
 /* Iteration */
+/*************/
 
 let x = "123🎧";                // Strings are immutable sequences of unsigned 16-bit values
 [...x] = ['1','2','3','🎧']     // Iteration operates on individual *characters*
                                 //  though most string manipulation functionality operates on the 16-bit representations
 
+/*******************/
 /* String Literals */
+/*******************/
 
 "String" === 'String' === `String`
 "You can include 'single quotes'"
 'You can include "double quotes"'
 'You can include \'single\' and "double" quotes'
 
+/******************/
 /* Multiple Lines */
+/******************/
 
 'A string\nwith two lines'
 
@@ -26,7 +34,9 @@ with two lines"
 `Yet another string
 with two lines`
 
+/********************/
 /* Escape Sequences */
+/********************/
 
 '\n'        // New line
 '\r'        // Carriage return
@@ -36,7 +46,9 @@ with two lines`
 '\xnn'      // Unicode character represented by the two hex digits nn
 '\xnnnn'    // Unicode character represented by the four hex digits nnnn
 
-/* String Manipulation */
+/****************/
+/* Manipulation */
+/****************/
 
 "Hello " + "world" === "Hello World"    // Concatenation
 "alpha" < "beta"                        // Comparison uses the 16-bit unicode character values
@@ -66,12 +78,16 @@ hw.charAt(0) === hw[0] === "H"
 " x ".trimEnd() === " x"
 " x ".trim() === "x"
 
+/*********************/
 /* Template Literals */
+/*********************/
 
 let user = "Bill"
 `Hello ${user}` === "Hello Bill"
 
-/* Pattern Matching with RegExp */
+/***********************/
+/* Regular Expressions */
+/***********************/
 
 let str = "numbers: 1, 2, 12"
 let regx = /\d+/g                               // match all ocurrances of 1 or more digits
