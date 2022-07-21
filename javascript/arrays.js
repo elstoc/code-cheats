@@ -145,47 +145,84 @@ a.slice(2)          // => [2, 3, 4, 5]      (no second arguemnt, read to the end
 a.slice(-2)         // => [4, 5]            (negative numbers measure relative to the end of the array)
 a.slice(0, -2)      // => [1, 2, 3]
 
-/* insert or remove elements with splice(?start, ?deletecount, ?items...) */
+/* insert or remove elements with splice(?start, ?deletecount, ?items...) 
+ *  splice adds or deletes elements from the existing array
+ *  and returns any deleted elements */
 
-a.splice()          // => []; a == [1, 2, 3, 4, 5]
-a.splice()
+a.splice()                  // => []; a == [1, 2, 3, 4, 5]
+a.splice(2, 0, "a", "b")    // => []; a == [1, 2, "a", "b", 3, 4, 5]
+                            // start from element 2, delete zero elements, add two new elements
+a.splice(2, 2, ["c", "d"])  // => ["a", "b"]; a == [1, 2, ["c", "d"], 3, 4, 5]
+                            // start from element 2, delete two elements, add one array element
 
-splice
-fill
-copyWithin
+/* fill an array (or part of it) with the same value using fill(value, ?start, ?end)
+ *  modifies the array and returns it */
 
-/*********************/
-/* Flattening Arrays */
-/*********************/
-
-flat
-flatMap
+let a = new Array(5)        // start with 5 empty elements
+a.fill(0)                   // => [0, 0, 0, 0, 0]; a == [0, 0, 0, 0, 0]
+a.fill(9, 2)                // => [0, 0, 9, 9, 9]
+a.fill(8, 3, 5)             // => [0, 0, 9, 8, 8]
 
 /*************************/
 /* Searching and Sorting */
 /*************************/
 
-find
-findIndex
+/* simple searching for matching values */
 
-indexOf
-lastIndexOf
+let a = [0, 1, 2, "3", 2, 1, 0]
 
-sort
-reverse
+a.indexOf(2)            // => 2  (only shows the index of the first match)
+a.indexOf(3)            // => -1 (indexOf uses === for comparison)
+a.indexOf(2, 3)         // => 4  (start from index 3)
 
-join
-toString
-toLocaleString
+a.lastIndexOf(1)        // => 5  (start from the end)
 
-/******************************/
-/* Reducing to a Single Value */
-/******************************/
+a.includes("3")         // => true (includes "3")
+                        // when using includes(), NaN matches NaN, but still uses ===
 
-every
-some
-includes
+/* matching with functions */
+let a = [1, 2, 3, 4, 5]
 
-reduce
-reduceRight
+a.every((x) => x < 6)           // => true (every value is < 6)
+                                // iterates until some value returns false or end of array is reached
 
+a.some((x) => x === 1)          // => true (some values are === 1)
+                                // iterates until some value returns true or end of array is reached
+
+a.findIndex((x) => x === 3)     // => 2  (a[2] === 3)
+a.findIndex((x) => x > 5)       // => -1 (no match found)
+a.find((x) => x % 2 == 0)       // => 2  (only finds the first matching value, then stops iterating)
+
+/* change order with sort() and reverse() */
+
+let a = [55, 333, 11111, 2222]
+
+a.sort()                        // a == [11111, 2222, 333, 55] (sorted alphabetically by default)
+a.sort((x, y) => x - y)         // a == [55, 333, 2222, 1111]
+                                // return > 0 if x should appear before y
+                                // return < 0 if y should appear before x
+
+a.reverse()                     // a == [2222, 11111, 333, 55]
+
+/************************/
+/* Combine array values */
+/************************/
+
+let a = [1, 2, 3, 4, 5]
+
+a.reduce((x,y) => x+y, 0)       // => 15  (start at zero and then add up the elements in order)
+a.reduce((x,y) => x*y, 1)       // => 120 (start at 1 and then multiply the elements)
+
+/* reduceRight(function, start) does the same but in reverse order */
+
+/*********************/
+/* Convert to string */
+/*********************/
+
+let a = [1, 2, 3, 4, 5, 6000]
+
+a.join()                        // => "1,2,3,4,5,6000"
+a.join("_")                     // => "1_2_3_4_5_6000"
+
+a.toString()                    // => "1,2,3,4,5,6000"
+a.toLocaleString()              // => "1,2,3,4,5,6,000"
