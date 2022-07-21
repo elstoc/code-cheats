@@ -117,12 +117,75 @@ letters.forEach((letter, index, array) => concat += letter )        // iterate e
                                                                     // excludes empty elements but cannot be termintated with break
                                                                     // concat === "ABCA"
 
-letters.map((letter) => letter.toLowerCase())                       // => ["a", "b", "c", "a"] (a new array)
-
-letters.filter((letter) => letter === "A")                          // => ["A", "A"] (a new array)
-
 /***********************/
 /* Array Decomposition */
 /***********************/
 
 let [x, y, z] = [1, 2, 3]               // x == 1; y == 2; z == 3
+
+/***********************/
+/* Manipulating Arrays */
+/***********************/
+
+letters.map((letter) => letter.toLowerCase())                       // => ["a", "b", "c", "a"] (a new array)
+
+letters.filter((letter) => letter === "A")                          // => ["A", "A"] (a new array)
+
+/*************/
+/* SubArrays */
+/*************/
+
+/* return contiguous parts of an array with slice(?start, ?end) */
+
+let a = [1, 2, 3, 4, 5]
+
+a.slice()           // => [1, 2, 3, 4, 5]   (no arguments just copies the whole array)
+a.slice(0, 3)       // => [1, 2, 3]         (from element zero, up to but not including element 3)
+a.slice(2)          // => [2, 3, 4, 5]      (no second arguemnt, read to the end of the array)
+a.slice(-2)         // => [4, 5]            (negative numbers measure relative to the end of the array)
+a.slice(0, -2)      // => [1, 2, 3]
+
+/* insert or remove elements with splice(?start, ?deletecount, ?items...) */
+
+a.splice()          // => []; a == [1, 2, 3, 4, 5]
+a.splice()
+
+splice
+fill
+copyWithin
+
+/*********************/
+/* Flattening Arrays */
+/*********************/
+
+flat
+flatMap
+
+/*************************/
+/* Searching and Sorting */
+/*************************/
+
+find
+findIndex
+
+indexOf
+lastIndexOf
+
+sort
+reverse
+
+join
+toString
+toLocaleString
+
+/******************************/
+/* Reducing to a Single Value */
+/******************************/
+
+every
+some
+includes
+
+reduce
+reduceRight
+
