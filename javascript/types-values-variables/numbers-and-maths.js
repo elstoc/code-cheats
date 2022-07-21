@@ -14,20 +14,20 @@
 /* BigInt (ES2020) */
 /*******************/
 
-0n           // => 0
-3n           // => 3
-100000n      // => 100000
+0n          // => 0
+3n          // => 3
+100000n     // => 100000
 
-0xffn        // => 255 (hex)
-0b10101n     // => 21 (binary)
-0o377n       // => 255 (octal)
+0xffn       // => 255 (hex)
+0b10101n    // => 21 (binary)
+0o377n      // => 255 (octal)
 
 BigInt(Number.MAX_SAFE_INTEGER)     // => 9007199254740991n
 let string = "1" + "0".repeat(100); // 1 followed by 100 zeros.
 BigInt(string)                      // => 10n**100n: one googol
 
-7n / 2n === 3n
-7n % 2n === 1n
+7n / 2n     // => 3n
+7n % 2n     // => 1n
 
 // You can compare Int and BigInt (except using type comparison)
 1 < 2n

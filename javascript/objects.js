@@ -2,12 +2,14 @@
 /* Creation */
 /************/
 
-let emptyObject = {} 
-let anotherEmptyObject = new Object()       // same as {}
-let arrayObject = new Array()               // same as []
-let dateObject = new Date() 
+{}                  // an empty object
+new Object()        // same as {}
+new Array()         // same as []
+new Date() 
 
-let film = {
+/* a complex object literal */
+
+{
     title: "Close Encounters of the Third Kind",
     bbfc_rating: "PG",
     "lead actor": {
@@ -31,14 +33,14 @@ objB.toString() = '[object Object]'     // toString() is inherited from Object.p
 /************************/
 
 let object = { x: 1, y: 2 } 
-object.x === 1                  // read using dot notation
-object["y"] === 2               // read using array notation
+object.x                   // => 1 (read using dot notation)
+object["y"]                // => 2 (read using array notation)
 
-object.z = 3                    // write using dot notation
-object["z"] = 3                 // write using array notation
+object.z = 3               // write using dot notation
+object["z"] = 3            // write using array notation
 
-delete object.x                 // delete using dot notation
-delete object["x"]              // delete using array notation
+delete object.x            // delete using dot notation
+delete object["x"]         // delete using array notation
 
 /******************************/
 /* Assignment Shorthand (ES6) */
@@ -51,47 +53,45 @@ let point = { x, y }            // this is equivalent to point = { x:x, y:y }
 /* Object Decomposition */
 /************************/
 
-// extract object properties into variables
+/* extract object properties into variables */
 let object = { x: 1, y: 2, z: 3 } 
 let { x, y } = object 
 
-// enclose in brackets for pre-declared variables
+/* enclose in brackets for pre-declared variables */
 let x, y 
 ( { x, y } = object ) 
-
-/*************************************/
-/* Accessing Non-Existent Properties */
-/*************************************/
-
-let obj = {} 
-obj.something === undefined                         // non-existent properties are undefined
-let l = obj.something.length                        // this returns an error
-
-let l = obj && something && obj.something.length    // this works but is somewhat verbose
-                                                    // will return undefined
-
-let l = obj?.something?.length                      // ES2020 conditional property access 
-                                                    // equivalent to the previous example
 
 /****************************************/
 /* Checking for Existence of Properties */
 /****************************************/
 
 let obj = { x: undefined }
-obj.x === undefined                         // x has been explicitly set to undefined
-obj.y === undefined                         // y does not exist
-"x" in object === true                      // x exists
-"y" in object === false                     // y does not exist
+obj.x                               // => undefined (explicitly set)
+obj.y                               // => undefined (obj.y doesn't exist)
+"x" in object                       // => true (obj.x exists)
+"y" in object                       // => false (obj.y doesn't exist)
 
-obj.hasOwnProperty("x") === true            // x exists
-obj.hasOwnProperty("y") === false           // y doesn't exist
-obj.hasOwnProperty("toString") === false    // toString is inherited
+obj.hasOwnProperty("x")             // => true (obj.x exists)
+obj.hasOwnProperty("y")             // => false (obj.y doesn't exist)
+obj.hasOwnProperty("toString")      // => false (toString is inherited - not own property)
+
+/***********************************/
+/* ES6 Conditional Property Access */
+/***********************************/
+
+let obj = {} 
+obj.x                           // => undefined (non-existent property)
+obj.x.length                    // ERROR (unable to read length on obj.x)
+
+obj && obj.x && obj.x.length    // => undefined (avoids the error but verbose)
+
+obj?.something?.length          // => undefined (ES2020 conditional property access)
 
 /******************************/
 /* Looping through Properties */
 /******************************/
 
-// with a for/in loop
+/* with a for/in loop */
 for(let prop in obj) {
     if(!obj.hasOwnProperty(prop)) continue;         //skip inherited properties
     if(typeof obj[prop] === "function") continue;   //skip methods
@@ -114,13 +114,13 @@ let objA = { x: "Ax", y: "Ay", z: "Az" }
 let objB = { y: "By" }
 let objC = { z: "Cz" }
 
-Object.assign(objA, objB, objC, { zz: "zz" } )              // modifies objA = { x: "Ax", y: "By", z: "Cz", zz: "zz" }
-                                                            // by copying parameters into the first object from subsequent objects
+Object.assign(objA, objB, objC, { zz: "zz" } )      // modifies objA == { x: "Ax", y: "By", z: "Cz", zz: "zz" }
+                                                    // by copying parameters into the first object from subsequent objects
 
-newObj = Object.assign({}, objA, objB, objC, { zz: "zz" })  // same thing but returns a new object
+Object.assign({}, objA, objB, objC, { zz: "zz" })   // same thing but returns a new object
 
-newObj = { ...objA, ...objB, ...objC, zz: "zz" }            // a new object again, but using the spread (...) operator
-                                                            // also note the final parameter is not an object here
+{ ...objA, ...objB, ...objC, zz: "zz" }             // a new object again, but using the spread (...) operator
+                                                    // also note the final parameter is not an object here
 
 /********************/
 /* Objects and JSON */
@@ -128,9 +128,9 @@ newObj = { ...objA, ...objB, ...objC, zz: "zz" }            // a new object agai
 
 let o = { x: 1, y: { z: [NaN, true, ""] } }
 
-let s = JSON.stringify(o)                               // Convert object to JSON
-s === '{"x":1,"y":{"z":[null,true,""]}}'                // note that JSON cannot represent NaN or Infinity
-JSON.parse(s) === { x: 1, y: { z: [null, true, ""] } }  // Parse JSON to object
+s = JSON.stringify(o)   // s === '{"x":1,"y":{"z":[null,true,""]}}'
+                        // (Note: JSON cannot represent NaN or Infinity)
+JSON.parse(s)           // => { x: 1, y: { z: [null, true, ""] } }  (object)
 
 /**************************/
 /* Default Object Methods */
@@ -138,13 +138,13 @@ JSON.parse(s) === { x: 1, y: { z: [null, true, ""] } }  // Parse JSON to object
 
 let coordinate = { x: 3000, y: 4000 }
 
-// objects have some default behaviour that may or may not be useful
+/* objects have default behaviour that may or may not be useful */
 
-coordinate.toString() === "[object Object]"                 // default toString method isn't very useful
-Number(coordinate) === NaN                                  // coordinate cannot be cast as a number
-JSON.stringify([coordinate]) === '[{"x":3000,"y":4000}]'    // perhaps we might prefer a different JSON representation
+coordinate.toString()           // => "[object Object]" (default toString method isn't very useful)
+Number(coordinate)              // => NaN (coordinate cannot be cast as a number)
+JSON.stringify([coordinate])    // => '[{"x":3000,"y":4000}]'
 
-// default behaviour can be overridden with user-defined methods
+/* default behaviour can be overridden */
 
 let coordinate = {
     x: 3000,
@@ -175,7 +175,7 @@ let uniqueInteger = {
     }
 };
 
-// getters and setters are invoked as if they are normal properties
+/* getters and setters are invoked as if they are normal properties */
 
 uniqueInteger.next = 10         // set the value
 uniqueInteger.next              // return next value === 11

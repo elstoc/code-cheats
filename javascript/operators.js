@@ -4,33 +4,33 @@
 
 let a = 1           // assignment
 
-a++ === 1           // post-increment; a === 2
-++a === 2           // pre-increment;  a === 2
-a-- === 1           // post-decrement; a === 0
---a === 0           // pre-increment;  a === 0
+a++                 // returns 1, a == 2 (post-increment)
+++a                 // returns 2, a == 2 (pre-increment)
+a--                 // returns 1, a == 0 (post-decrement)
+--a                 // returns 0, a == 0 (pre-decrement)
 
 a += 1              // increment and assign, equivalent to a = a + 1
                     // similarly with -=, *=, /=, %= etc.
 
-2**3 === 8          // exponentiate
+2**3                // => 8 (exponentiate)
 
 /*****************/
 /* Boolean logic */
 /*****************/
 
-!false === true             // not
-false && true === false     // and
-false || true === true      // or
+!false                      // => true (not)
+false && true               // => false (and)
+false || true               // => true (or)
 
-1 == "1"                    // non-strict equality (implicit type conversion)
-1 != "2"                    // non-strict inequality
-1 === 1                     // strict equality (no type conversion)
-1 !== "1"                   // strict equality
+1 == "1"                    // => true (non-strict equality - implicit type conversion)
+1 != "2"                    // => true (non-strict inequality)
+1 === 1                     // => true (strict equality - no type conversion)
+1 !== "1"                   // => true (strict inequality)
 
-2 > 1                       // greater than
-1 < 2                       // less than
-1 >= 1                      // greater or equal
-1 <= 1                      // less or equal
+2 > 1                       // => true (greater than)
+1 < 2                       // => true (less than)
+1 >= 1                      // => true (greater or equal)
+1 <= 1                      // => true (less or equal)
 
 /********************************/
 /* String and Numeric Behaviour */
